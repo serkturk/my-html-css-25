@@ -9,29 +9,22 @@
 </head>
 <body>
 
-    <h3>Store Hours</h3>
+    <button
+    onclick="doSomething()" 
+    style="font-size:25px;
+    background-color:grey;
+    color:lightblue;
+    border-radius:25px;">
+    click me
+    </button>
 
-    <table border="1" style="background-color:black;">
-        <tr align="center" style="background-color:lightblue;">
-            <th width="100">Sunday</th>
-            <th width="100">Monday</th>
-            <th width="100">Tuesday</th>
-            <th width="100">Wednesday</th>
-            <th width="100">Thursday</th>
-            <th width="100">Friday</th>
-            <th width="100">Saturday</th>
-        </tr>
+    <p id="greeting">Hello</p>
 
-        <tr align="center" style="background-color:aliceblue;">
-            <td>Closed</td>
-            <td>9-5</td>
-            <td>9-5</td>
-            <td>9-5</td>
-            <td>9-5</td>
-            <td>9-5</td>
-            <td>10-2</td>
-        </tr>
-    </table>
+    <script>
+        function doSomething(){
+            document.getElementById("greeting").innerHTML = "Goodbye"
+        }
+    </script>
 
 </body>
 </html>
