@@ -8,11 +8,14 @@
 }
 
 h1{
-    font-family: Roboto, arial;
+    border: 3px solid hsl(275, 46%, 44%);
+    border-radius: 10px;
 }
 p{
-    font-family: OpenSans, "lucida console", "courier new";
-    font-size: 18px;
-    font-weight: bold;
-    font-style: normal;
+    border-bottom: 3px solid rgb(144, 38, 38);
+    border-top: 3px solid rgb(207, 207, 64);
+    border-left: 3px dotted rgb(33, 117, 33);
+    border-right: 3px dashed rgb(67, 67, 178);
+
+    border-radius: 10px;
 }
