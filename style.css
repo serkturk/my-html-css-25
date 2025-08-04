@@ -7,12 +7,22 @@
     font-family: OpenSans;
 }
 
-h1{
-    text-shadow: 3px 3px 5px rgb(179, 18, 18), -3px -3px 5px rgb(83, 219, 231);
+body{
+    margin: 0px;
+}
+.box{
+    border: 5px solid;
+    font-size: 5em;
+    width: 250px;
+    height: 250px;
 }
 #box1{
-    width: 100px;
-    height: 100px;
-    background-color: rgb(210, 210, 210);
-    box-shadow: 3px 3px 5px;
+    background-color: rgb(39, 172, 198);
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+}
+#box2{
+    background-color: rgb(64, 54, 181);
+    margin-top: 100px;
 }
