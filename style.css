@@ -8,14 +8,11 @@
 }
 
 h1{
-    border: 3px solid hsl(275, 46%, 44%);
-    border-radius: 10px;
+    text-shadow: 3px 3px 5px rgb(179, 18, 18), -3px -3px 5px rgb(83, 219, 231);
 }
-p{
-    border-bottom: 3px solid rgb(144, 38, 38);
-    border-top: 3px solid rgb(207, 207, 64);
-    border-left: 3px dotted rgb(33, 117, 33);
-    border-right: 3px dashed rgb(67, 67, 178);
-
-    border-radius: 10px;
+#box1{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(210, 210, 210);
+    box-shadow: 3px 3px 5px;
 }
