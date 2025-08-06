@@ -1,6 +1,8 @@
-#container{
-    border: 2px solid;
+#greeting p{
+    background-color: hsl(190, 74%, 70%);
+    padding: 10px;
+    display: none;
 }
-#container p{
-    background-color: hsl(60, 79%, 68%);
+#greeting:hover p{
+    display: block;
 }
