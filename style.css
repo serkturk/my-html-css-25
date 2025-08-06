@@ -1,7 +1,6 @@
-body{
-    background-image: url(images/IMG_3275.JPG);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
+#container{
+    border: 2px solid;
+}
+#container p{
+    background-color: hsl(60, 79%, 68%);
 }
