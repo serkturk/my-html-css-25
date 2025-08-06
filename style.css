@@ -1,18 +1,15 @@
-*{
-    box-sizing: border-box;
+#box1{
+    width: 200px;
+    height: 200px;
+    background-color: hsl(211, 100%, 72%);
+    position: sticky;
+    top: 0px;
 }
-.container{
-    background-color: gray;
-    height: 100vh;
-}
-.box{
-    background-color: aliceblue;
-    border: 2px solid;
-    padding: 25px;
-    height: auto;
-    width: 50%;
-    float: left;
-    text-align: center;
-
-    min-height: 50%;
+#box2{
+    width: 100px;
+    height: 100px;
+    background-color: hsl(2, 100%, 72%);
+    position: absolute;
+    top: 50px;
+    left: 50px;
 }
