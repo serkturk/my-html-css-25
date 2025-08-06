@@ -1,12 +1,18 @@
-div{
-    background-color: brown;
-    width: 100px;
-    height: 100px;
-    display: inline-block;
+*{
+    box-sizing: border-box;
 }
-span{
-    background-color: blue;
-    width: 100px;
-    height: 100px;
-    display: inline-block;
+.container{
+    background-color: gray;
+    height: 100vh;
+}
+.box{
+    background-color: aliceblue;
+    border: 2px solid;
+    padding: 25px;
+    height: auto;
+    width: 50%;
+    float: left;
+    text-align: center;
+
+    min-height: 50%;
 }
