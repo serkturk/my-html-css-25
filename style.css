@@ -1,31 +1,25 @@
-.icons{
+.container{
+    display: flex;
+    border: 10px solid black;
+    height: 90vh;
+}
+.box{
+    width: 150px;
+    height: 150px;
+    font-size: 8em;
     text-align: center;
+    border-radius: 15px;
 }
-.icons a{
-    text-decoration: none;
-    margin-right: 20px;
+#box1{
+    background-color: hsl(0, 100%, 68%);
+    align-self: center;
 }
-.fa-solid.fa-house.fa-5x{
-    color: hsl(0, 0%, 66%);
+#box2{
+    background-color: hsl(52, 100%, 70%);
 }
-.fa-brands.fa-twitter.fa-5x{
-    color: hsl(197, 87%, 58%);
+#box3{
+    background-color: hsl(120, 58%, 47%);
 }
-.fa-brands.fa-youtube.fa-5x{
-    color: hsl(0, 100%, 50%);
-}
-.fa-brands.fa-tiktok.fa-5x{
-    color: hsl(0, 0%, 10%);
-}
-.fa-solid.fa-house.fa-5x:hover{
-    color: hsl(0, 0%, 76%);
-}
-.fa-brands.fa-twitter.fa-5x:hover{
-    color: hsl(197, 87%, 78%);
-}
-.fa-brands.fa-youtube.fa-5x:hover{
-    color: hsl(0, 100%, 70%);
-}
-.fa-brands.fa-tiktok.fa-5x:hover{
-    color: hsl(0, 0%, 30%);
+#box4{
+    background-color: hsl(206, 85%, 52%);
 }
