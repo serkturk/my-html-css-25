@@ -1,0 +1,16 @@
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; }
+
+#desktop{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url('assets/images/pc.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: hsl(0, 0%, 4%);
+}
