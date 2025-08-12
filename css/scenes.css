@@ -1,9 +1,77 @@
-* { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
-
-.desktop{
-    height: 100vh;
+/* Reset + base */
+* {
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+}
+  
+/* Desktop background */
+.desktop {
+    position: relative; /* anchor for taskbar positioning */
     width: 100vw;
+    height: 100vh;
     background: url(../assets/images/wallpaper.jpg) center / cover no-repeat;
+    overflow: hidden;
+}
+  
+/* Content area above taskbar */
+.main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 7vh; /* reserve exactly 7% height for taskbar */
+    padding: 24px; /* space for future icons */
+}
+  
+/* Taskbar */
+.taskbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 7vh;
+    min-height: 48px; /* keeps usable on small screens */
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+  
+    /* glassy translucent bar */
+    background: rgba(20, 20, 20, 0.55);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35);
+    color: #fff;
 }
 
+/* taskbar sections */
+.taskbar-left,
+.taskbar-center,
+.taskbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* hard-limit the logo size */
+.windows-logo {
+  height: 28px;
+  width: 28px;
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+}
+
+/* clock look so it’s visible */
+#taskbar-clock {
+  text-align: right;
+  color: #fff;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  line-height: 1.1;
+}
+#time { font-size: 14px; font-weight: 600; }
+#date { font-size: 12px; opacity: .9; }
