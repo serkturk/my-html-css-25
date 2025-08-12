@@ -7,12 +7,12 @@
   background: black;
 }
 
-/* Zooming part */
+/* Zooming part (photo + overlay scale together) */
 .camera {
   position: absolute;
   inset: 0;
   transform-origin: 2% 46.31%;
-  animation: camZoom 6s cubic-bezier(.22,.61,.36,1) 3s forwards;
+  animation: camZoom 6s cubic-bezier(.22,.61,.36,1) 3s forwards; /* 3s pause, 6s zoom */
 }
 .camera img {
   position: absolute;
@@ -43,28 +43,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(120% 120% at 50% 40%, #0f172a 0%, #0c1423 55%, #0a0f1c 100%);
+
+  /* Windows background with a light darken to boost contrast */
+  background: url("../assets/images/windows-login.jpg") center / cover no-repeat;
+  background-color: rgba(0,0,0,0.25);
+  background-blend-mode: multiply;
+
   animation: loginIn 0.6s ease-out 6.2s forwards;
 }
 
 .login-container {
   text-align: center;
-  transform: translateY(-20%);
+  transform: translateY(-20%); /* shift up a bit like Windows */
 }
 
+/* Profile picture + name */
 .user-pic {
   width: 140px;
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid rgba(255,255,255,0.8);
+  border: 3px solid rgba(255,255,255,0.95);
+  box-shadow: 0 8px 28px rgba(0,0,0,.55);
   margin-bottom: 15px;
 }
-
 .login-container h2 {
   font-size: 1.5rem;
   font-weight: 400;
   margin: 0;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.85), 0 0 12px rgba(255,255,255,.18);
 }
 
 /* Password box */
@@ -72,38 +80,49 @@
   width: 350px;
   height: 50px;
   margin: 20px auto 0;
-  padding-left: 12px;
   display: flex;
-  align-items: center;
-  border-radius: 4px;
-  background: rgba(255,255,255,0.15);
+  justify-content: center;   /* center contents horizontally */
+  align-items: center;       /* center vertically */
+  border-radius: 8px;
+  background: rgba(0,0,0,.55);
+  border: 1px solid rgba(255,255,255,.40);
+  box-shadow: 0 10px 30px rgba(0,0,0,.45);
   position: relative;
+  overflow: hidden;
 }
 
-/* Placeholder text */
-.placeholder {
-  color: rgba(255,255,255,0.6);
+/* Center the active label (placeholder or dots) */
+.placeholder,
+.password-dots {
   position: absolute;
-  left: 12px;
-  font-size: 1.5rem;
-  animation: fadeOut 0.4s ease 7.2s forwards;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-/* Dots container */
+/* Placeholder text (visible first) */
+.placeholder {
+  color: rgba(255,255,255,.88);
+  font-size: 1.5rem;
+  animation: fadeOut 0.4s ease 7.2s forwards; /* hide before dots start */
+}
+
+/* Dots container (fades in one-by-one) */
 .password-dots {
   display: flex;
   gap: 8px;
-  position: absolute;
-  left: 12px;
 }
 
-/* Dots */
+/* Each dot */
 .password-dots span {
   opacity: 0;
+  color: #fff;
   font-size: 1.5rem;
-  font-family: monospace;
+  font-family: monospace;      /* fixed spacing */
+  text-shadow: 0 1px 2px rgba(0,0,0,.8);
   animation: fadeInDot 0.2s forwards;
 }
+
+/* Staggered delays for 14 dots */
 .password-dots span:nth-child(1)  { animation-delay: 7.6s; }
 .password-dots span:nth-child(2)  { animation-delay: 7.8s; }
 .password-dots span:nth-child(3)  { animation-delay: 8.0s; }
@@ -126,3 +145,9 @@
 @keyframes loginIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
 @keyframes fadeInDot { from { opacity: 0; } to { opacity: 1; } }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .camera { animation: none; transform: none; }
+  .black, .login { animation: none; opacity: 1; }
+}
