@@ -1,0 +1,10 @@
+/* Basic reset */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: #0b0d10;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}

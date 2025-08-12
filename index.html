@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/desktop.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio - Desktop Intro</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/desktop.css">
 </head>
 <body>
-    <div id="desktop"></div>
+    <div class="stage">
+  
+        <!-- Zooming part -->
+        <div class="camera">
+          <img class="desk" src="assets/images/pc.jpg" alt="Desk setup" />
+          <img class="overlay" src="assets/images/transparent.png" alt="" aria-hidden="true" />
+        </div>
+      
+        <!-- Fade layers (don’t zoom) -->
+        <div class="black"></div>
+
+        <div class="login">
+
+          <!-- Placeholder Windows-style login -->
+          <div class="login-container">
+
+            <img class="user-pic" src="assets/images/profile.jpg" alt="User Picture" />
+            <h2>Serkan Aymaz</h2>
+
+            <div class="password-box">
+              <span class="placeholder">Password</span>
+              <div class="password-dots">
+                <span>•</span><span>•</span><span>•</span><span>•</span>
+                <span>•</span><span>•</span><span>•</span><span>•</span>
+                <span>•</span><span>•</span><span>•</span><span>•</span>
+                <span>•</span><span>•</span>
+              </div>
+            </div>                           
+
+          </div>
+
+        </div>
+      
+    </div>      
 </body>
 </html>
