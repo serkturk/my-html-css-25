@@ -137,12 +137,13 @@ html, body {
 
 .modal-close {
   position: absolute;
-  right: 12px;
-  top: 8px;
+  right: 5px;
+  top: 1px;
   font-size: 22px;
   cursor: pointer;
   color: #ccc;
 }
+
 .modal-close:hover {
   color: white;
 }
@@ -164,3 +165,4 @@ html, body {
   font-size: 14px;
   line-height: 1.4;
 }
+
