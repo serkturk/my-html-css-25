@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+    /* page fade-out */
+    body { opacity: 1; transition: opacity .7s ease; }
+    body.fade-out { opacity: 0; }
+  </style>  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Serkan's PC</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/desktop.css">
 </head>
+<script>
+  const LEAVE_AT_MS = 10500;
+
+  setTimeout(() => {
+    document.body.classList.add('fade-out');   // start fading out
+  }, LEAVE_AT_MS);
+
+  setTimeout(() => {
+    window.location.href = 'desktop.html';     // then navigate
+  }, LEAVE_AT_MS + 800);
+</script>
 <body>
     <div class="stage">
   
