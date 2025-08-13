@@ -169,7 +169,7 @@ body.no-scroll { overflow: hidden; }
 
 .contact-label {
   font-size: 14px;
-  color: #cbd5e1; /* lighter gray labels */
+  color: #cbd5e1;
 }
 
 .contact-value {
@@ -182,16 +182,16 @@ body.no-scroll { overflow: hidden; }
 }
 
 a.contact-row:hover {
-  background: #333; /* subtle hover darkening */
+  background: #333;
 }
 
 /* Nudge the close X left when Contacts is open */
 .modal[data-app="contacts"] .modal-close {
-  margin-right: 12px;  /* adjust value to taste (8–16px) */
+  margin-right: 12px;
 }
 
-/* Photos gallery — dark cards with a soft, wholesome vibe */
-.modal[data-app="photos"] { --accent: #E91E63; } /* matches your Photos tile color */
+/* Photos gallery */
+.modal[data-app="photos"] { --accent: #E91E63; }
 
 .gallery {
   display: grid;
@@ -270,7 +270,7 @@ a.contact-row:hover {
 }
 
 /* Experience modal accent + wider canvas */
-.modal[data-app="experience"] { --accent: #FF9800; } /* matches your Experience tile */
+.modal[data-app="experience"] { --accent: #FF9800; }
 #app-modal[data-app="experience"] .modal-content {
   max-width: 960px;
   width: min(92vw, 960px);
@@ -336,7 +336,7 @@ a.contact-row:hover {
 }
 
 /* ===== Notes (pseudo notepad) ===== */
-.modal[data-app="notes"] { --accent: #FFEB3B; } /* same vibe as your Notes tile */
+.modal[data-app="notes"] { --accent: #FFEB3B; }
 #app-modal[data-app="notes"] .modal-content { max-width: 780px; width: min(92vw, 780px); }
 
 .notepad{
@@ -356,9 +356,9 @@ a.contact-row:hover {
 }
 .np-dots{ display:flex; gap:6px; }
 .np-dots span{ width:10px; height:10px; border-radius:50%; display:block; }
-.np-dots span:nth-child(1){ background:#f87171; }  /* red */
-.np-dots span:nth-child(2){ background:#fbbf24; }  /* yellow */
-.np-dots span:nth-child(3){ background:#34d399; }  /* green */
+.np-dots span:nth-child(1){ background:#f87171; }
+.np-dots span:nth-child(2){ background:#fbbf24; }
+.np-dots span:nth-child(3){ background:#34d399; }
 .np-title{ flex:1; text-align:center; font-weight:800; letter-spacing:.2px; }
 .np-action{
   background: rgba(255,255,255,0.06);
@@ -372,7 +372,7 @@ a.contact-row:hover {
   position: relative;
   padding: 18px 20px 22px 28px;
   background:
-    linear-gradient(90deg, rgba(255,98,98,.35) 34px, transparent 0) , /* red margin line */
+    linear-gradient(90deg, rgba(255,98,98,.35) 34px, transparent 0) ,
     repeating-linear-gradient(
       to bottom,
       transparent 0 28px,
@@ -396,7 +396,7 @@ a.contact-row:hover {
 }
 
 /* Projects modal accent + width */
-.modal[data-app="projects"] { --accent: #3F51B5; } /* matches your Projects tile */
+.modal[data-app="projects"] { --accent: #3F51B5; }
 #app-modal[data-app="projects"] .modal-content {
   max-width: 900px;
   width: min(92vw, 900px);
