@@ -1,49 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        /* page fade-in */
-        body { opacity: 0; transition: opacity .7s ease; }
-        body.ready { opacity: 1; }
-    </style>
+  <style>
+    /* page fade-in */
+    body { opacity: 0; transition: opacity .7s ease; }
+    body.ready { opacity: 1; }
+  </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Serkan's PC</title>
   <link rel="stylesheet" href="css/scenes.css">
 </head>
-<script>
-    // fade desktop in on load
-    window.addEventListener('DOMContentLoaded', () => {
-      document.body.classList.add('ready');
-    });
-</script>  
 <body>
   <div class="desktop">
-    <div class="main"></div>
+    <!-- MAIN DESKTOP AREA -->
+    <div class="main">
+      <div class="desktop-icons">
+        <a href="#" class="desktop-app" data-open="contacts"   style="--tile-bg:#4CAF50" title="Contacts">
+          <img src="assets/images/icons/contacts.png" alt="Contacts"><span>Contacts</span>
+        </a>
+        <a href="#" class="desktop-app" data-open="experience" style="--tile-bg:#FF9800" title="Experience">
+          <img src="assets/images/icons/exp.png" alt="Experience"><span>Experience</span>
+        </a>
+        <a href="https://github.com/serkturk" target="_blank" rel="noopener" class="desktop-app" style="--tile-bg:#24292E" title="GitHub">
+          <img src="assets/images/icons/git.png" alt="GitHub"><span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/serkan-aymaz/" target="_blank" rel="noopener" class="desktop-app" style="--tile-bg:#0A66C2" title="LinkedIn">
+          <img src="assets/images/icons/linkedin.png" alt="LinkedIn"><span>LinkedIn</span>
+        </a>
+        <a href="#" class="desktop-app" data-open="notes"      style="--tile-bg:#FFEB3B" title="Notes">
+          <img src="assets/images/icons/notes.png" alt="Notes"><span>Notes</span>
+        </a>
+        <a href="#" class="desktop-app" data-open="photos"     style="--tile-bg:#E91E63" title="Photos">
+          <img src="assets/images/icons/photos.png" alt="Photos"><span>Photos</span>
+        </a>
+        <a href="#" class="desktop-app" data-open="projects"   style="--tile-bg:#3F51B5" title="Projects">
+          <img src="assets/images/icons/projects.png" alt="Projects"><span>Projects</span>
+        </a>
+      </div>
+    </div>
 
-    <!-- Taskbar -->
+    <!-- TASKBAR -->
     <div class="taskbar">
       <div class="taskbar-left">
         <img src="assets/images/windows-logo.png" alt="Windows Logo" class="windows-logo">
       </div>
 
       <nav class="taskbar-center">
-        <a class="tb-app" id="valorant-btn" href="#" title="Valorant">
+        <a class="tb-app" href="#" data-open="valorant" title="Valorant">
           <img src="assets/images/icons/valorant.png" alt="Valorant">
         </a>
-        <a class="tb-app" id="osu-btn" href="#" title="osu!">
+        <a class="tb-app" href="#" data-open="osu" title="osu!">
           <img src="assets/images/icons/osu.png" alt="osu!">
         </a>
-        <a target="_blank" class="tb-app" href="https://open.spotify.com/user/serkanaymaz" title="Spotify">
+        <a target="_blank" rel="noopener" class="tb-app" href="https://open.spotify.com/user/serkanaymaz" title="Spotify">
           <img src="assets/images/icons/spotify.png" alt="Spotify">
         </a>
-        <a target="_blank" class="tb-app" href="https://www.youtube.com/" title="YouTube">
+        <a target="_blank" rel="noopener" class="tb-app" href="https://www.youtube.com/" title="YouTube">
           <img src="assets/images/icons/youtube.png" alt="YouTube">
         </a>
-        <a class="tb-app" href="mailto:sa2392@cornell.edu" title="Gmail">
-          <img src="assets/images/icons/gmail.png" alt="Gmail">
+        <a class="tb-app" href="mailto:sa2392@cornell.edu" title="Email">
+          <img src="assets/images/icons/gmail.png" alt="Email">
         </a>
-        <a target="_blank" class="tb-app" href="https://www.instagram.com/serkan.aymaz" title="Instagram">
+        <a target="_blank" rel="noopener" class="tb-app" href="https://www.instagram.com/serkan.aymaz" title="Instagram">
           <img src="assets/images/icons/instagram.png" alt="Instagram">
         </a>
       </nav>
@@ -55,68 +74,288 @@
     </div>
   </div>
 
-  <!-- Valorant Modal -->
-  <div id="valorant-modal" class="modal">
-    <div class="modal-content">
-      <span class="modal-close">&times;</span>
-      <img src="assets/images/immortal.jpg" alt="Immortal Rank" class="modal-img">
-      <p class="modal-text">
-        This was my highest rank out of over 2 million Valorant players in North America (top 0.001% 😎).
-        I reached this during my junior year of high school, in the depths of the junior year struggle.
-      </p>
+  <!-- ================== TEMPLATES (content per app) ================== -->
+  <template id="tpl-contacts">
+    <div class="contact-card">
+      <header class="contact-header">
+        <img class="contact-avatar" src="assets/images/profile.png" alt="Serkan Aymaz">
+        <h1 id="modal-title">Serkan Aymaz</h1>
+      </header>
+  
+      <h3 class="contact-section-title">PERSONAL INFO</h3>
+      <div class="contact-list">
+        <a class="contact-row" href="mailto:sa2392@cornell.edu">
+          <span class="contact-ico">✉️</span>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">sa2392@cornell.edu</span>
+        </a>
+        <div class="contact-row">
+          <span class="contact-ico">🏠</span>
+          <span class="contact-label">Home</span>
+          <span class="contact-value">Coral Springs, FL</span>
+        </div>
+      </div>
+  
+      <h3 class="contact-section-title">EDUCATION</h3>
+      <div class="contact-list">
+        <div class="contact-row">
+          <span class="contact-ico">🎓</span>
+          <span class="contact-label">College</span>
+          <span class="contact-value">Cornell University,<br>College of Engineering</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-ico">📘</span>
+          <span class="contact-label">Major</span>
+          <span class="contact-value">Computer Science</span>
+        </div>
+      </div>
+  
+      <h3 class="contact-section-title">SOCIALS</h3>
+      <div class="contact-list">
+        <a class="contact-row" target="_blank" rel="noopener" href="https://www.linkedin.com/in/serkan-aymaz/">
+          <img class="contact-brand" src="assets/images/icons/linkedin.png" alt="">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">@serkan-aymaz</span>
+        </a>
+        <a class="contact-row" target="_blank" rel="noopener" href="https://github.com/serkturk">
+          <img class="contact-brand" src="assets/images/icons/git.png" alt="">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">@serkturk</span>
+        </a>
+        <a class="contact-row" target="_blank" rel="noopener" href="https://www.instagram.com/serkan.aymaz">
+          <img class="contact-brand" src="assets/images/icons/instagram.png" alt="">
+          <span class="contact-label">Instagram</span>
+          <span class="contact-value">@serkan.aymaz</span>
+        </a>
+      </div>
     </div>
-  </div>
+  </template>  
 
-  <!-- osu! Modal -->
-  <div id="osu-modal" class="modal">
-    <div class="modal-content">
-      <span class="modal-close">&times;</span>
-      <video class="modal-video" src="assets/videos/gameplay.mp4" autoplay loop muted></video>
-      <p class="modal-text">
-        This isn't sped up — osu! really moves that fast. My favorite rhythm game, and it actually helped me improve my aim in Valorant.
-      </p>
+  <template id="tpl-experience">
+    <h2 id="modal-title">Experience</h2>
+    <div class="modal-body xp-wrap">
+      <div class="xp-timeline">
+        <!-- IT Intern — Miami Grill -->
+        <article class="xp-card">
+          <div class="xp-media">
+            <img src="assets/images/miami.png" alt="Kitchen screens at Miami Grill">
+          </div>
+          <header class="xp-head">
+            <h3>Information Technology Intern <span>@ Miami Grill</span></h3>
+            <div class="xp-meta">
+              <span class="xp-chip">May 2025 - Aug 2025</span>
+              <span class="xp-dot">•</span>
+              <span class="xp-chip">Fort Lauderdale, FL</span>
+            </div>
+          </header>
+          <p class="xp-desc">Built real-time tools that kept the kitchen and front-of-house perfectly in sync.</p>
+        </article>
+  
+        <!-- Operations Manager Intern — Miami Grill -->
+        <article class="xp-card">
+          <div class="xp-media">
+            <img src="assets/images/miami.png" alt="Operations planning board">
+          </div>
+          <header class="xp-head">
+            <h3>Operations Manager Intern <span>@ Miami Grill</span></h3>
+            <div class="xp-meta">
+              <span class="xp-chip">May 2024 - Aug 2024</span>
+              <span class="xp-dot">•</span>
+              <span class="xp-chip">Fort Lauderdale, FL</span>
+            </div>
+          </header>
+          <p class="xp-desc">Streamlined workflows and launched programs that made busy nights feel effortless.</p>
+        </article>
+  
+        <!-- Machine Learning Researcher — FSU YSP -->
+        <article class="xp-card">
+          <div class="xp-media">
+            <img src="assets/images/ysp.jpg" alt="Research notes and graphs">
+          </div>
+          <header class="xp-head">
+            <h3>Machine Learning Researcher <span>@ FSU Young Scholars Program</span></h3>
+            <div class="xp-meta">
+              <span class="xp-chip">June 2023 - July 2023</span>
+              <span class="xp-dot">•</span>
+              <span class="xp-chip">Tallahassee, FL</span>
+            </div>
+          </header>
+          <p class="xp-desc">Explored materials data with ML to turn messy tables into clear, testable insights.</p>
+        </article>
+  
+  
+        <!-- CS1110 Course Consultant — Cornell -->
+        <article class="xp-card">
+          <div class="xp-media">
+            <img src="assets/images/bowers.png" alt="Teaching assistants helping students">
+          </div>
+          <header class="xp-head">
+            <h3>CS1110 Course Consultant <span>@ Cornell Bowers CIS</span></h3>
+            <div class="xp-meta">
+              <span class="xp-chip">Aug 2025 - Present</span>
+              <span class="xp-dot">•</span>
+              <span class="xp-chip">Ithaca, NY</span>
+            </div>
+          </header>
+          <p class="xp-desc">Guided new programmers through their first “aha!” moments with Python.</p>
+        </article>
+
+        <!-- Fellow — URMC -->
+        <article class="xp-card">
+          <div class="xp-media">
+            <img src="assets/images/urmc.jpeg" alt="URMC team photo">
+          </div>
+          <header class="xp-head">
+            <h3>Fellow <span>@ Underrepresented Minorities in Computing</span></h3>
+            <div class="xp-meta">
+              <span class="xp-chip">Sept 2024 - Present</span>
+              <span class="xp-dot">•</span>
+              <span class="xp-chip">Ithaca, NY</span>
+            </div>
+          </header>
+          <p class="xp-desc">Helped build tools and community programs that make tech more welcoming and useful.</p>
+        </article>
+      </div>
     </div>
-  </div>
+  </template>  
+
+  <template id="tpl-notes">
+    <h2 id="modal-title">Notes</h2>
+    <div class="modal-body">
+      <ul>
+        <li>Resume window with inline PDF viewer.</li>
+        <li>CUApts: project compare view (PCPartPicker-style).</li>
+      </ul>
+    </div>
+  </template>
+
+  <template id="tpl-photos">
+    <h2 id="modal-title">Photos</h2>
+    <div class="modal-body">
+      <div class="gallery">
+        <!-- BFFs -->
+        <figure class="gallery-card">
+          <img src="assets/images/bffs.jpg" alt="Hometown best friends">
+          <figcaption class="gallery-caption">
+            <h3>Hometown Best Friends</h3>
+            <p>These are my day-ones. I wouldn't be the person I am today without their support, laughs, and late-night talks.</p>
+          </figcaption>
+        </figure>
+  
+        <!-- Hiking -->
+        <figure class="gallery-card">
+          <img src="assets/images/hiking.jpg" alt="Hiking before freshman year">
+          <figcaption class="gallery-caption">
+            <h3>Outdoor Odyssey</h3>
+            <p>A week before college, I spent 10 days in the woods with other incoming freshmen. No phones, just the trail. We started as strangers and finished as friends.</p>
+          </figcaption>
+        </figure>
+  
+        <!-- PC -->
+        <figure class="gallery-card">
+          <img src="assets/images/pc.jpg" alt="My PC setup">
+          <figcaption class="gallery-caption">
+            <h3>My PC Setup</h3>
+            <p>I love building computers. This is the rig from the opening animation. You're in my computer… hey, get out!</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </template>  
+
+  <template id="tpl-projects">
+    <h2 id="modal-title">Projects</h2>
+    <div class="modal-body">
+      <ul class="project-list">
+        <li><strong>Ordering + Rewards</strong> — React + FastAPI + SQLite.</li>
+        <li><strong>DTI Upgrades</strong> — 90% fewer backend calls.</li>
+        <li><strong>Binary Alloys ML</strong> — F1 0.56.</li>
+      </ul>
+      <p><a class="button" href="projects.html">Open full projects →</a></p>
+    </div>
+  </template>
+
+  <template id="tpl-valorant">
+    <h2 id="modal-title">Valorant</h2>
+    <img src="assets/images/immortal.jpg" alt="Immortal Rank" class="modal-img">
+    <p class="modal-text">Highest rank among NA players (top 0.001%).</p>
+  </template>
+
+  <template id="tpl-osu">
+    <h2 id="modal-title">osu!</h2>
+    <video class="modal-video" src="assets/videos/gameplay.mp4" autoplay loop muted playsinline></video>
+    <p class="modal-text">Not sped up — osu! really moves that fast.</p>
+  </template>
+
+  <!-- =============== REUSABLE MODAL =============== -->
+  <section id="app-modal" class="modal" aria-modal="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-content" id="modal-content">
+      <a class="modal-close" href="#" aria-label="Close">×</a>
+      <!-- injected template content -->
+    </div>
+  </section>
 
   <script>
-    function updateClock() {
-      const now = new Date();
-      document.getElementById("time").textContent = now.toLocaleTimeString("en-US", {
-        timeZone: "America/New_York",
-        hour: "2-digit",
-        minute: "2-digit"
-      });
-      document.getElementById("date").textContent = now.toLocaleDateString("en-US", {
-        timeZone: "America/New_York",
-        month: "2-digit",
-        day: "2-digit",
-        year: "numeric"
-      });
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
+    // Fade-in + clock
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('ready');
 
-    function setupModal(buttonId, modalId) {
-      const modal = document.getElementById(modalId);
-      const openBtn = document.getElementById(buttonId);
-      const closeBtn = modal.querySelector(".modal-close");
+      const timeEl = document.getElementById("time");
+      const dateEl = document.getElementById("date");
+      function updateClock() {
+        const now = new Date();
+        timeEl.textContent = now.toLocaleTimeString("en-US", {timeZone:"America/New_York", hour:"2-digit", minute:"2-digit"});
+        dateEl.textContent = now.toLocaleDateString("en-US", {timeZone:"America/New_York", month:"2-digit", day:"2-digit", year:"numeric"});
+      }
+      setInterval(updateClock, 1000); updateClock();
+    });
 
-      openBtn.addEventListener("click", (e) => {
+    // Reusable modal controller
+    (function () {
+      const modal = document.getElementById('app-modal');
+      const modalContent = document.getElementById('modal-content');
+
+      function openModal(key) {
+        const tpl = document.getElementById('tpl-' + key);
+        if (!tpl) return;
+        modalContent.innerHTML = '<a class="modal-close" href="#" aria-label="Close">×</a>' + tpl.innerHTML;
+        modal.style.display = 'flex';
+        document.body.classList.add('no-scroll');
+        modal.setAttribute('data-app', key);  
+        history.replaceState(null, '', '#' + key);
+      }
+
+      function closeModal() {
+        modal.style.display = 'none';
+        document.body.classList.remove('no-scroll');
+        modal.removeAttribute('data-app');
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+
+      // Icon clicks (desktop + taskbar)
+      document.addEventListener('click', (e) => {
+        const t = e.target.closest('[data-open]');
+        if (!t) return;
         e.preventDefault();
-        modal.style.display = "flex";
+        openModal(t.getAttribute('data-open'));
       });
 
-      closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
+      // Backdrop / close button
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal || e.target.classList.contains('modal-close')) closeModal();
       });
 
-      window.addEventListener("click", (e) => {
-        if (e.target === modal) modal.style.display = "none";
+      // ESC to close
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
       });
-    }
 
-    setupModal("valorant-btn", "valorant-modal");
-    setupModal("osu-btn", "osu-modal");
+      // Deep-link on load (#contacts, #experience, …)
+      window.addEventListener('DOMContentLoaded', () => {
+        const hash = location.hash.replace('#','');
+        if (hash) openModal(hash);
+      });
+    })();
   </script>
 </body>
 </html>

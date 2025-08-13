@@ -1,168 +1,336 @@
 /* Reset + base */
-* {
-    box-sizing: border-box;
-}
-html, body {
-    height: 100%;
-    margin: 0;
-}
-  
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif; color: #fff; }
+
 /* Desktop background */
 .desktop {
-    position: relative; /* anchor for taskbar positioning */
-    width: 100vw;
-    height: 100vh;
-    background: url(../assets/images/wallpaper.jpg) center / cover no-repeat;
-    overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: url(../assets/images/wallpaper.jpg) center / cover no-repeat;
+  overflow: hidden;
 }
-  
+
 /* Content area above taskbar */
 .main {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 7vh; /* reserve exactly 7% height for taskbar */
-    padding: 24px; /* space for future icons */
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 7vh;   /* reserve taskbar */
+  padding: 24px;
 }
-  
+
 /* Taskbar */
 .taskbar {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 7vh;
-    min-height: 48px; /* keeps usable on small screens */
-  
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
-  
-    /* glassy translucent bar */
-    background: rgba(20, 20, 20, 0.55);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35);
-    color: #fff;
-}
-
-/* taskbar sections */
-.taskbar-left,
-.taskbar-center,
-.taskbar-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* clock look so it’s visible */
-#taskbar-clock {
-  text-align: right;
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 7vh; min-height: 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px;
+  background: rgba(20,20,20,0.55);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.35);
   color: #fff;
-  font-family: "Segoe UI", system-ui, sans-serif;
-  line-height: 1.1;
 }
+.taskbar-left, .taskbar-center, .taskbar-right { display: flex; align-items: center; gap: 10px; }
+.taskbar-center { justify-content: center; gap: 35px; flex: 1; }
+.taskbar-left, .taskbar-right { flex: 0 0 auto; }
+#taskbar-clock { text-align: right; line-height: 1.1; }
 #time { font-size: 14px; font-weight: 600; }
 #date { font-size: 12px; opacity: .9; }
+.tb-app img, .windows-logo { width: 38px; height: 38px; object-fit: contain; display: block; filter: drop-shadow(0 1px 2px rgba(0,0,0,.35)); transition: transform .12s ease, filter .12s ease, opacity .12s ease; }
+.tb-app:hover, .tb-app:focus-visible { transform: translateY(-2px) scale(1.12); filter: drop-shadow(0 4px 12px rgba(0,0,0,.35)); }
+.tb-app { display: inline-flex; align-items: center; justify-content: center; padding: 6px; border-radius: 8px; }
+.tb-app:focus-visible { outline: 2px solid rgba(255,255,255,.6); outline-offset: 2px; }
 
-/* center group */
-.taskbar-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 35px;                 /* space between icons */
-    flex: 1;                   /* let center expand so it truly centers */
-}
-  
-/* left & right keep natural width so center can center */
-.taskbar-left, .taskbar-right { flex: 0 0 auto; }
-  
-/* app icons: consistent size */
-.tb-app img {
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
-    display: block;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,.35));
-    transition: transform .12s ease, filter .12s ease, opacity .12s ease;
-}
-  
-/* subtle hover/focus */
-.tb-app:hover,
-.tb-app:focus-visible {
-  transform: translateY(-2px) scale(1.12);
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,.35));
+/* Desktop icon grid — centers partial rows */
+.desktop-icons{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 110px); /* keeps last row centered */
+  gap: 36px 56px;
+  justify-content: center;
+  align-content: start;
+  height: 100%;
+  padding-top: 32px;
 }
 
-.tb-app {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 6px;
-    border-radius: 8px;
+/* Desktop app tiles */
+.desktop-app { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: white; text-shadow: 0 1px 2px rgba(0,0,0,.6); }
+.desktop-app img {
+  width: 90px; height: 90px; object-fit: contain;
+  border-radius: 20px; padding: 12px;
+  background: var(--tile-bg, rgba(255,255,255,.12)); /* set per icon inline */
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
 }
-.tb-app:focus-visible {
-    outline: 2px solid rgba(255,255,255,.6);
-    outline-offset: 2px;
-}
-  
-/* keep Windows logo small too */
-.windows-logo { width: 38px; height: 38px; object-fit: contain; }
+.desktop-app:hover img { transform: scale(1.08); box-shadow: 0 0 18px rgba(0,0,0,0.6); }
+.desktop-app span { margin-top: 8px; font-size: 14px; }
 
-/* Modal styles */
+/* ===== Modals (reusable) ===== */
 .modal {
   display: none;
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0;
   background-color: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
+  justify-content: center; align-items: center;
   z-index: 999;
 }
-
 .modal-content {
   background: #1a1a1a;
+  color: #fff;
   padding: 20px;
   border-radius: 10px;
-  max-width: 500px;
-  width: 90%;
+  max-width: 560px; width: min(92vw, 560px);
+  max-height: 80vh; overflow: auto; -webkit-overflow-scrolling: touch;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.modal-body { line-height: 1.5; font-size: 14px; }
+.modal-img, .modal-video { max-width: 100%; border-radius: 8px; margin-bottom: 15px; display: block; }
+.modal-text { font-size: 14px; line-height: 1.4; }
+.modal-close { position: sticky; top: 0; float: right; margin-left: auto; font-size: 22px; text-decoration: none; color: #ccc; }
+.modal-close:hover { color: #fff; }
+body.no-scroll { overflow: hidden; }
+
+/* Button inside modals */
+.button {
+  display: inline-block; padding: 8px 12px; border-radius: 8px;
+  background: #3F51B5; color: #fff; text-decoration: none; font-weight: 600;
+}
+.button:hover { filter: brightness(1.1); }
+
+/* ===== Contacts card (iOS-style) ===== */
+.modal .modal-close {
+  color: #000; /* black close icon */
+}
+.modal .modal-close:hover {
+  color: #333;
+}
+/* ===== Contacts card — dark theme to match modal ===== */
+.contact-card {
+  background: #1a1a1a; /* same as modal background */
+  color: #fff;
+  width: min(92vw, 520px);
+  max-width: 520px;
+  border-radius: 22px;
+  padding: 22px 18px 18px;
+  box-shadow: 0 24px 70px rgba(0,0,0,.35);
+}
+
+.contact-header h1 {
+  font-size: 28px;
+  line-height: 1.15;
+  margin: 0;
+  font-weight: 800;
+  color: #fff; /* white text */
   text-align: center;
-  color: white;
-  position: relative;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-.modal-close {
-  position: absolute;
-  right: 5px;
-  top: 1px;
-  font-size: 22px;
-  cursor: pointer;
-  color: #ccc;
+.contact-section-title {
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #cbd5e1; /* lighter gray for headings */
+  margin: 16px 4px 8px;
 }
 
-.modal-close:hover {
-  color: white;
+.contact-list {
+  background: #2a2a2a; /* dark gray inner box */
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
 }
 
-.modal-img,
-.modal-video {
-  max-width: 100%;
-  border-radius: 8px;
-  margin-bottom: 15px;
+.contact-row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  text-decoration: none;
+  color: inherit;
 }
 
-.modal-video {
+.contact-row:first-child {
+  border-top: none;
+}
+
+.contact-ico {
+  font-size: 18px;
+  opacity: .85;
+  text-align: center;
+}
+
+.contact-brand {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
   display: block;
-  width: 100%;
-  height: auto;
 }
 
-.modal-text {
+.contact-label {
   font-size: 14px;
-  line-height: 1.4;
+  color: #cbd5e1; /* lighter gray labels */
 }
 
+.contact-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  justify-self: end;
+  text-align: right;
+  white-space: nowrap;
+}
+
+a.contact-row:hover {
+  background: #333; /* subtle hover darkening */
+}
+
+/* Nudge the close X left when Contacts is open */
+.modal[data-app="contacts"] .modal-close {
+  margin-right: 12px;  /* adjust value to taste (8–16px) */
+}
+
+/* Photos gallery — dark cards with a soft, wholesome vibe */
+.modal[data-app="photos"] { --accent: #E91E63; } /* matches your Photos tile color */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.gallery-card {
+  background: #14161c;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  transition: transform .18s ease, box-shadow .18s ease, outline-color .18s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+  outline: 2px solid color-mix(in oklab, var(--accent) 45%, white 0%);
+  outline-offset: 0;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-caption {
+  padding: 14px 16px;
+}
+
+.gallery-caption h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.gallery-caption p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #cfd8e3;
+}
+
+/* Make Photos modal a bit wider */
+#app-modal[data-app="photos"] .modal-content {
+  max-width: 960px;
+  width: min(92vw, 960px);
+}
+.contact-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.05),
+              0 6px 20px rgba(0,0,0,0.3);
+}
+
+.contact-header{
+  display: flex;              
+  flex-direction: column;
+  align-items: center;     
+  gap: 10px;
+  margin-bottom: 12px;
+  text-align: center;    
+}
+
+.contact-avatar{ 
+  display: block;
+  margin: 0 auto;
+}
+
+/* Experience modal accent + wider canvas */
+.modal[data-app="experience"] { --accent: #FF9800; } /* matches your Experience tile */
+#app-modal[data-app="experience"] .modal-content {
+  max-width: 960px;
+  width: min(92vw, 960px);
+}
+
+/* Layout */
+.xp-wrap { padding-top: 6px; }
+.xp-timeline{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* Card */
+.xp-card{
+  background: #14161c;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  transition: transform .18s ease, box-shadow .18s ease, outline-color .18s ease;
+}
+.xp-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+  outline: 2px solid color-mix(in oklab, var(--accent) 45%, white 0%);
+}
+
+/* Media */
+.xp-media{
+  aspect-ratio: 16/9;
+  background: #0f1116;
+}
+.xp-media img{
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+/* Head + meta */
+.xp-head{ padding: 12px 14px 6px; }
+.xp-head h3{
+  margin: 0 0 6px;
+  font-size: 16px; font-weight: 800; letter-spacing: .2px;
+}
+.xp-head h3 span{ opacity: .8; font-weight: 700; }
+.xp-meta{
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  color: #cfd8e3; font-size: 12px;
+}
+.xp-chip{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 999px;
+  padding: 4px 8px;
+}
+.xp-dot{ opacity: .5; }
+
+/* One-liner description */
+.xp-desc{
+  margin: 6px 14px 14px;
+  color: #dbe3ef;
+  font-size: 14px; line-height: 1.5;
+}
