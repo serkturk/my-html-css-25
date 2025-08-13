@@ -334,3 +334,123 @@ a.contact-row:hover {
   color: #dbe3ef;
   font-size: 14px; line-height: 1.5;
 }
+
+/* ===== Notes (pseudo notepad) ===== */
+.modal[data-app="notes"] { --accent: #FFEB3B; } /* same vibe as your Notes tile */
+#app-modal[data-app="notes"] .modal-content { max-width: 780px; width: min(92vw, 780px); }
+
+.notepad{
+  background: #101317;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.45);
+}
+
+/* title bar */
+.notepad-bar{
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  background: #151A21;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.np-dots{ display:flex; gap:6px; }
+.np-dots span{ width:10px; height:10px; border-radius:50%; display:block; }
+.np-dots span:nth-child(1){ background:#f87171; }  /* red */
+.np-dots span:nth-child(2){ background:#fbbf24; }  /* yellow */
+.np-dots span:nth-child(3){ background:#34d399; }  /* green */
+.np-title{ flex:1; text-align:center; font-weight:800; letter-spacing:.2px; }
+.np-action{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: #cbd5e1; padding: 6px 10px; border-radius: 8px;
+  font-weightx: 700; cursor: not-allowed; opacity: .55;
+}
+
+/* paper area: ruled lines + margin line */
+.notepad-paper{
+  position: relative;
+  padding: 18px 20px 22px 28px;
+  background:
+    linear-gradient(90deg, rgba(255,98,98,.35) 34px, transparent 0) , /* red margin line */
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 28px,
+      rgba(255,255,255,.06) 28px 30px
+    );
+}
+.np-content{ color:#E6EDF7; }
+.np-coming{
+  margin: 0 0 6px;
+  font-size: 20px; font-weight: 800; letter-spacing:.2px;
+}
+.np-sub{
+  margin: 0 0 12px; color:#cfd8e3; font-size:14px;
+}
+.np-list{
+  margin: 0; padding-left: 1.1rem;
+}
+.np-list li{
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+/* Projects modal accent + width */
+.modal[data-app="projects"] { --accent: #3F51B5; } /* matches your Projects tile */
+#app-modal[data-app="projects"] .modal-content {
+  max-width: 900px;
+  width: min(92vw, 900px);
+}
+
+/* Projects list (blobbed blurbs) */
+.pj-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.pj-item {
+  position: relative;
+  padding: 16px 18px;
+  background: #14161c;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease, outline-color .18s ease;
+}
+
+/* subtle “blob” glow */
+.pj-item::before {
+  content: "";
+  position: absolute;
+  left: -60px; top: -80px;
+  width: 260px; height: 260px;
+  background: radial-gradient(60% 60% at 50% 50%,
+              color-mix(in oklab, var(--accent) 45%, transparent 55%) 0%,
+              transparent 70%);
+  filter: blur(28px);
+  opacity: .25;
+  pointer-events: none;
+}
+
+.pj-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+  outline: 2px solid color-mix(in oklab, var(--accent) 45%, white 0%);
+  outline-offset: 0;
+}
+
+.pj-title {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.pj-text {
+  margin: 0;
+  color: #cfd8e3;
+  font-size: 14px;
+  line-height: 1.55;
+}

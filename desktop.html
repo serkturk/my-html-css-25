@@ -220,14 +220,26 @@
   </template>  
 
   <template id="tpl-notes">
-    <h2 id="modal-title">Notes</h2>
-    <div class="modal-body">
-      <ul>
-        <li>Resume window with inline PDF viewer.</li>
-        <li>CUApts: project compare view (PCPartPicker-style).</li>
-      </ul>
+    <div class="notepad">
+      <div class="notepad-bar">
+        <div class="np-dots" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="np-title">Notes</div>
+        <button class="np-action" disabled title="Coming soon">New</button>
+      </div>
+  
+      <div class="notepad-paper">
+        <div class="np-content">
+          <p class="np-coming">Coming soon</p>
+          <p class="np-sub">
+            This will sync with a Google Form so you (and I) can post quick notes right here.
+          </p>
+        </div>
+      </div>
     </div>
   </template>
+  
 
   <template id="tpl-photos">
     <h2 id="modal-title">Photos</h2>
@@ -266,14 +278,33 @@
   <template id="tpl-projects">
     <h2 id="modal-title">Projects</h2>
     <div class="modal-body">
-      <ul class="project-list">
-        <li><strong>Ordering + Rewards</strong> — React + FastAPI + SQLite.</li>
-        <li><strong>DTI Upgrades</strong> — 90% fewer backend calls.</li>
-        <li><strong>Binary Alloys ML</strong> — F1 0.56.</li>
-      </ul>
-      <p><a class="button" href="projects.html">Open full projects →</a></p>
+      <div class="pj-list">
+        <article class="pj-item">
+          <h3 class="pj-title">Miami Grill — Ordering & Rewards</h3>
+          <p class="pj-text">
+            Built a full-stack web app for online ordering and a points-based rewards program for a busy restaurant.
+            Stack: React, FastAPI, SQLite, JWT auth, and background jobs for receipts.
+          </p>
+        </article>
+  
+        <article class="pj-item">
+          <h3 class="pj-title">Machine Learning — Alloy Prediction</h3>
+          <p class="pj-text">
+            Predicted phase formation for binary alloys from tabular materials data.
+            Used Python with Pandas and scikit-learn (feature engineering, cross-validation, logistic regression + random forest with F1 score of 0.56).
+          </p>
+        </article>
+  
+        <article class="pj-item">
+          <h3 class="pj-title">Population & Food Analysis</h3>
+          <p class="pj-text">
+            Explored long-term links between population growth and food prices using public datasets.
+            Cleaned and joined data with Pandas, then produced time-series visuals and simple regression with Matplotlib/NumPy.
+          </p>
+        </article>
+      </div>
     </div>
-  </template>
+  </template>  
 
   <template id="tpl-valorant">
     <h2 id="modal-title">Valorant</h2>
